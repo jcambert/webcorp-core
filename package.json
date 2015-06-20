@@ -1,0 +1,24 @@
+{
+  "name": "webcorp-core",
+  "version": "0.0.0",
+  "description":"WebCorp SDK core components.",
+  "homepage":"jc.ambert.free.fr",
+  "author":"Ambert Jean-Christophe <jc.ambert@free.fr>",
+  "licence":"GPL",
+  "keywords":["webcorp","web","sdk","core"],
+  "dependencies": {},
+  "repository": {
+	"type":"git",
+	"url":"https://github.com/jcambert/webcorp-core"
+  },
+  "devDependencies": {
+
+  },
+  "engines": {
+    "node": ">=0.10.x",
+	"npm": ">=1.2.x"
+  },
+  "scripts": {
+    
+  }
+}

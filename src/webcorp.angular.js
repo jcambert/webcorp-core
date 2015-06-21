@@ -3,6 +3,6 @@ angular.module('webcorp.core')
     return new webcorp.ConfigService();
 })
 .factory('locationService', function () {
-    return new webcorp.LocationService();
+    return new webcorp.LocationService ();
 })
 ;

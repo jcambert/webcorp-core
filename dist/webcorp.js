@@ -40,3 +40,46 @@ webcorp.namespace = function (namespaceString) {
 webcorp.define = function (namespace, fn) {
     webcorp.namespace(namespace).bind(fn);
 };
+
+
+webcorp.define('webcorp.LocationService', function () {
+
+    return {
+
+        path: function () {
+            return window.location.href;
+        }
+    };
+});
+webcorp.define('webcorp.ConfigService',function(){
+	var self={};
+	webcorp.Config = webcorp.Config || {};
+	self.get = function (key, defaultValue) {
+
+        var value = webcorp.Config[key];
+
+        if (_.isUndefined(value) && !_.isUndefined(defaultValue)) {
+            return defaultValue;
+        }
+
+        return value;
+    };
+	
+	self.set = function (key, value) {
+        if (!webcorp.Config) {
+            webcorp.Config =  {};
+        }
+
+        webcorp.Config[key] = value;
+    };
+
+    return self;
+});
+angular.module('webcorp.core')
+.factory('configService', function () {
+    return new webcorp.ConfigService();
+})
+.factory('locationService', function () {
+    return new webcorp.LocationService();
+})
+;

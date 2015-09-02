@@ -75,7 +75,7 @@ webcorp.define('webcorp.ConfigService',function(){
 
     return self;
 });
-angular.module('webcorp.core')
+angular.module('webcorp.core',[])
 .factory('$config', function () {
     return new webcorp.ConfigService();
 })

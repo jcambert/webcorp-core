@@ -1,4 +1,4 @@
-angular.module('webcorp.core')
+angular.module('webcorp.core',[])
 .factory('$config', function () {
     return new webcorp.ConfigService();
 })

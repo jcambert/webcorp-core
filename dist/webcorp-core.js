@@ -75,6 +75,19 @@ webcorp.define('webcorp.ConfigService',function(){
 
     return self;
 });
+webcorp.define('webcorp.DependencyService',function(){
+	var self={};
+	self.dependencies=[];
+	
+	self.add=function(dep){
+		self.dependencies.push(dep);
+	}
+	
+	return self;
+	
+});
+
+webcorp.dependencies= new webcorp.DependencyService ();
 angular.module('webcorp.core',[])
 .factory('$config', function () {
     return new webcorp.ConfigService();

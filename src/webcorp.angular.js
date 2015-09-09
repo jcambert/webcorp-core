@@ -5,21 +5,24 @@ angular.module('webcorp.core',[])
 .factory('locationService', function () {
     return new webcorp.LocationService ();
 })
-.service('$template',['$http','$templateCache','$q', '$config',function($http,$templateCache,$q, $config){
-    this.get = function(name){
+.service('$template',['$log', '$http','$templateCache','$q', '$config',function($log,$http,$templateCache,$q, $config){
+	var self=this;
+    self.get = function(name){
         return $config.get('TemplateRoot','directives/templates/')+name+'.tpl.html';
     };
-	this.load=function(name){
+	self.load=function(name){
 		
 		var tpl=$templateCache.get(this.get(name));
 		if(tpl){
+			$log.log('Load template:'+name);
+			$log.log(tpl);
 			return $q.when(tpl);	
 		}else{
 			var deffered=$q.defer();
 			
-			$http.get(this.get(name),{cache:true})
+			$http.get(self.get(name),{cache:true})
 				.success(function(response){
-					$templateCache.put(this.get(name),response);
+					$templateCache.put(self.get(name),response);
 					deffered.resolve(response);
 				})
 				.error(function(response){
@@ -27,7 +30,7 @@ angular.module('webcorp.core',[])
 				})
 				;
 			
-			return deffered.promise();
+			return deffered.promise;
 			
 		}
 	}
